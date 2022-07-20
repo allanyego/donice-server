@@ -11,7 +11,7 @@ export default class ReviewsDAO {
         }
 
         try {
-            reviews = await conn.db(process.env.DB_NS).collection('review');
+            reviews = await conn.db(process.env.DB_NS).collection('reviews');
         } catch (error) {
             console.error(`Unable to establish collection handles in userDAO: ${error}`);
         }
@@ -23,8 +23,9 @@ export default class ReviewsDAO {
                 name: user.name,
                 user_id: user._id,
                 text: review,
-                restaurant_id: ObjectId(reviewDoc)
+                restaurant_id: ObjectId(restaurantId)
             };
+
     
             return await reviews.insertOne(reviewDoc);
         } catch (error) {

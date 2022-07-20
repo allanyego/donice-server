@@ -49,7 +49,7 @@ export default class ReviewsController {
 
             res.json({status: 'success'});
         } catch (error) {
-            res.json(500).json({error: e.message});
+            res.status(500).json({error: e.message});
         }
     }
 
